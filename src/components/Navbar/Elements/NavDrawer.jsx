@@ -16,7 +16,10 @@ export default function NavDrawer() {
         </div>
       </SheetTrigger>
 
-      <SheetContent side="left" className="w-64 p-4 bg-[#181818] text-white">
+      <SheetContent
+        side="left"
+        className="w-[240px] p-4 bg-[#272727] text-white border-0"
+      >
         <SheetHeader>
           <SheetTitle className="text-lg font-bold mb-4">Menu</SheetTitle>
         </SheetHeader>

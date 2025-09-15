@@ -7,7 +7,7 @@ const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   return (
-    <div className="flex-grow max-w-[600px] mx-4">
+    <div className="flex-grow max-w-[500px] mx-4">
       <div className="relative">
         <Input
           type="text"
