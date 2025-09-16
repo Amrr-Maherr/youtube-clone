@@ -16,7 +16,7 @@ const UserActions = () => {
             <Plus className="text-white" strokeWidth={1} />
           </div>
         </TooltipTrigger>
-        <TooltipContent>add</TooltipContent>
+        <TooltipContent>Add</TooltipContent>
       </Tooltip>
       <Tooltip>
         <TooltipTrigger>
@@ -26,9 +26,12 @@ const UserActions = () => {
         </TooltipTrigger>
         <TooltipContent>notification</TooltipContent>
       </Tooltip>
-      <Avatar>
-        <AvatarImage src="https://github.com/shadcn.png" />
-        <AvatarFallback>CN</AvatarFallback>
+      <Avatar className="cursor-pointer">
+        <AvatarImage
+          src="https://github.com/shadcn.png"
+          className="w-[32px] h-[32px] rounded-full"
+        />
+        <AvatarFallback className="bg-gray-700 text-white">CN</AvatarFallback>
       </Avatar>
     </div>
   );
