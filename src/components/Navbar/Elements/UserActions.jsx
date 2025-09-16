@@ -12,8 +12,8 @@ const UserActions = () => {
       <Tooltip>
         <TooltipTrigger>
           <div className="w-[78px] h-[36px] rounded-full bg-[#272727] flex items-center justify-center gap-2">
-            <p className="text-[14px] text-white">add</p>
-            <Plus className="text-white" />
+            <p className="text-[14px] text-white">Add</p>
+            <Plus className="text-white" strokeWidth={1} />
           </div>
         </TooltipTrigger>
         <TooltipContent>add</TooltipContent>
@@ -21,7 +21,7 @@ const UserActions = () => {
       <Tooltip>
         <TooltipTrigger>
           <div className="w-[40px] h-[40px] rounded-full flex items-center justify-center cursor-pointer hover:bg-[#272727]">
-            <Bell size={24} className="text-white" />
+            <Bell size={24} strokeWidth={1} className="text-white" />
           </div>
         </TooltipTrigger>
         <TooltipContent>notification</TooltipContent>

@@ -11,7 +11,7 @@ const Navbar = () => {
         <div className="flex-1 flex items-center justify-center flex-row-reverse">
           <SearchBar />
           <div className="w-[40px] h-[40px] rounded-full flex items-center justify-center cursor-pointer bg-[#272727]">
-            <Mic size={24} className="text-white" />
+            <Mic size={24} strokeWidth={1} className="text-white" />
           </div>
         </div>
         <div className="flex items-center justify-center gap-2.5">
