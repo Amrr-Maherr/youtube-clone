@@ -7,7 +7,12 @@ export const FetchCategories = createAsyncThunk(
   async () => {
     try {
       const response = await axios.get(
-        process.env.NEXT_PUBLIC_YOUTUBE_URL_VIDEO_CATEGORIES
+        process.env.NEXT_PUBLIC_YOUTUBE_API_KEY,
+        {
+          headers: {
+            Authorization: `Bearer ${process.env.YOUTUBE_API_KEY}`,
+          },
+        }
       );
       return response.data;
     } catch (error) {
