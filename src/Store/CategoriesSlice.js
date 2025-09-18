@@ -12,7 +12,7 @@ export const FetchCategories =  createAsyncThunk(
           params: {
             part: "snippet",
             regionCode: "US",
-            key: process.env.NEXT_PUBLIC_YOUTUBE_API_KEY,
+            key: "AIzaSyDfEiDb-6fjNXQIDtn3Q7-PaXD5XzDir2g",
           },
         }
       );
