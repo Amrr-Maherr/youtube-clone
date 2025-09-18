@@ -14,8 +14,6 @@ function CategoriesNav() {
   useEffect(() => {
     dispatch(FetchCategories());
   }, [dispatch]);
-console.log(Data);
-
   if (loading) {
     return <p>loading ...</p>;
   }

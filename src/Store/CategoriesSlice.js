@@ -7,7 +7,7 @@ export const FetchCategories =  createAsyncThunk(
   async () => {
     try {
       const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_YOUTUBE_API_BASE}${process.env.NEXT_PUBLIC_YOUTUBE_ENDPOINT_VIDEO_CATEGORIES}`,
+        `${"https://www.googleapis.com/youtube/v3"}${"/videoCategories"}`,
         {
           params: {
             part: "snippet",
