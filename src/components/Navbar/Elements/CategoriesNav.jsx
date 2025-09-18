@@ -30,6 +30,7 @@ console.log(Data);
         spaceBetween={10}
         showNavigation={true}
         showPagination={false}
+        slidesPerViewMobile={3}
       >
         {Data.slice(0, 15).map((ele) => (
           <div

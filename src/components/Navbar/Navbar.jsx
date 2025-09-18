@@ -7,7 +7,7 @@ import CategoriesNav from "./Elements/CategoriesNav";
 const Navbar = () => {
   return (
     <div
-      className="w-full bg-[#120e0f] border-b shadow-sm !border-0 sticky top-0 z-50 h-full"
+      className="w-full bg-[#120e0f]/95 border-b shadow-sm !border-0 sticky top-0 z-50 h-full"
     >
       <div className="flex items-center justify-between flex-row-reverse px-4 py-2  mx-auto">
         <UserActions />
