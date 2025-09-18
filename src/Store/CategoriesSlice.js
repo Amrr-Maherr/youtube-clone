@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 // Async thunk to fetch categories
-export const FetchCategories = createAsyncThunk(
+export const FetchCategories =  createAsyncThunk(
   "categories/fetchCategories",
   async () => {
     try {

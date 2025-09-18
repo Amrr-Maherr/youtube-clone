@@ -3,6 +3,7 @@ import Logo from "./Elements/Logo";
 import SearchBar from "./Elements/SearchBar";
 import UserActions from "./Elements/UserActions";
 import { Mic } from "lucide-react";
+import CategoriesNav from "./Elements/CategoriesNav";
 const Navbar = () => {
   return (
     <div className="w-full bg-transparent border-b shadow-sm !border-0 h-[56px]">
@@ -19,6 +20,7 @@ const Navbar = () => {
           <Logo />
         </div>
       </div>
+      <CategoriesNav/>
     </div>
   );
 };
