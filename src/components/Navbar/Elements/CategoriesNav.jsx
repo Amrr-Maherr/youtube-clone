@@ -35,7 +35,7 @@ console.log(Data);
         {Data.slice(0, 15).map((ele) => (
           <div
             key={ele.id}
-            className="shrink-0 text-white bg-[#272727] rounded-[8px] px-4 py-2 text-[14px] cursor-pointer hover:bg-[#3a3a3a] transition"
+            className="shrink-0 text-white bg-[#272727] rounded-[8px] px-2 py-2 text-[14px] cursor-pointer hover:bg-[#3a3a3a] transition"
           >
             <p className="text-center ">{ele.snippet.title}</p>
           </div>

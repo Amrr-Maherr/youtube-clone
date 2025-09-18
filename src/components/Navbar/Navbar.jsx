@@ -13,7 +13,7 @@ const Navbar = () => {
         <UserActions />
         <div className="flex-1 flex items-center justify-center flex-row-reverse">
           <SearchBar />
-          <div className="w-[40px] h-[40px] rounded-full flex items-center justify-center cursor-pointer bg-[#272727]">
+          <div className="w-[40px] h-[40px] rounded-full items-center justify-center cursor-pointer bg-[#272727] hidden md:flex">
             <Mic size={24} strokeWidth={1} className="text-white" />
           </div>
         </div>

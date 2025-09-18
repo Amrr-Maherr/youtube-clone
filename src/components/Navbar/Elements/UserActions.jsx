@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/tooltip";
 const UserActions = () => {
   return (
-    <div className="flex items-center gap-5">
+    <div className=" hidden md:flex items-center gap-5">
       <Tooltip>
         <TooltipTrigger>
           <div className="w-[78px] h-[36px] rounded-full bg-[#272727] flex items-center justify-center gap-2">
