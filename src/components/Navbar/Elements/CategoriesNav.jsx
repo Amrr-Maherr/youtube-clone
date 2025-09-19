@@ -29,7 +29,7 @@ function CategoriesNav() {
         spaceBetween={15}
         showPagination={false}
         showNavigation={false}
-        slidesPerViewMobile={4}
+        slidesPerViewMobile={2}
       >
         {Data.slice(0, 15).map((ele) => (
           <div
