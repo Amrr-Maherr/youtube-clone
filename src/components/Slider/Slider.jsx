@@ -15,17 +15,23 @@ export default function Slider({
   modules = [Pagination, Autoplay],
   showNavigation = true,
   showPagination = true,
+  autoplay = false,
+  loop = false,
 }) {
   return (
     <Swiper
       slidesPerView={slidesPerView}
       spaceBetween={spaceBetween}
-      autoplay={{
-        delay: 3000,
-        disableOnInteraction: false,
-        ...swiperOptions.autoplay,
-      }}
-      loop={swiperOptions.loop ?? true}
+      autoplay={
+        autoplay
+          ? {
+              delay: 3000,
+              disableOnInteraction: false,
+              ...swiperOptions.autoplay,
+            }
+          : false
+      }
+      loop={loop}
       pagination={
         showPagination
           ? { dynamicBullets: true, ...swiperOptions.pagination }
