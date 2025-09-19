@@ -33,10 +33,10 @@ export default function Slider({
       }
       navigation={showNavigation ? { ...swiperOptions.navigation } : false}
       breakpoints={{
-        440: {
+        340: {
           slidesPerView: slidesPerViewMobile,
           spaceBetween: spaceBetween,
-          ...swiperOptions.breakpoints?.[440],
+          ...swiperOptions.breakpoints?.[340],
         },
         1024: {
           slidesPerView: slidesPerView,
