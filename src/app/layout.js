@@ -14,14 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 const roboto = Roboto({
-  weight: [
-    "100", // Thin
-    "300", // Light
-    "400", // Regular
-    "500", // Medium
-    "700", // Bold
-    "900", // Black
-  ],
+  weight: ["100", "300", "400", "500", "700", "900"],
   subsets: ["latin"],
   style: ["normal", "italic"],
   variable: "--font-roboto",
@@ -30,14 +23,14 @@ const roboto = Roboto({
 export const metadata = {
   title: "YouTube",
   description: "Watch, upload, and explore videos online",
-  icons: {
-    icon: "/icons/youtube.png",
-  },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/icons/youtube.png" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable} antialiased`}
       >
