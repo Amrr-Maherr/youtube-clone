@@ -29,6 +29,7 @@ function CategoriesNav() {
         spaceBetween={15}
         showPagination={false}
         showNavigation={false}
+        slidesPerViewMobile={4}
       >
         {Data.slice(0, 15).map((ele) => (
           <div
@@ -40,7 +41,7 @@ function CategoriesNav() {
                 : "bg-[#272727] text-white hover:bg-[#3a3a3a]"
             }`}
           >
-            <p className="text-center whitespace-nowrap overflow-hidden text-ellipsi">
+            <p className="text-center whitespace-nowrap overflow-hidden text-ellipsis">
               {ele.snippet.title}
             </p>
           </div>
