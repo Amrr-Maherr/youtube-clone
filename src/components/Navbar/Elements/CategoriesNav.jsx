@@ -24,19 +24,28 @@ function CategoriesNav() {
 
   return (
     <div className="flex gap-2 overflow-x-hidden scrollbar-hide px-4 py-3">
-      {Data.slice(0, 15).map((ele) => (
-        <div
-          key={ele.id}
-          onClick={() => setSelectedId(ele.id)}
-          className={`shrink-0 rounded-[8px] px-4 py-2 text-[14px] cursor-pointer transition ${
-            selectedId === ele.id
-              ? "bg-white text-black"
-              : "bg-[#272727] text-white hover:bg-[#3a3a3a]"
-          }`}
-        >
-          <p className="text-center">{ele.snippet.title}</p>
-        </div>
-      ))}
+      <Slider
+        slidesPerView={13}
+        spaceBetween={15}
+        showPagination={false}
+        showNavigation={false}
+      >
+        {Data.slice(0, 15).map((ele) => (
+          <div
+            key={ele.id}
+            onClick={() => setSelectedId(ele.id)}
+            className={`shrink-0 rounded-[8px] px-4 py-2 text-[14px] cursor-pointer transition ${
+              selectedId === ele.id
+                ? "bg-white text-black"
+                : "bg-[#272727] text-white hover:bg-[#3a3a3a]"
+            }`}
+          >
+            <p className="text-center whitespace-nowrap overflow-hidden text-ellipsi">
+              {ele.snippet.title}
+            </p>
+          </div>
+        ))}
+      </Slider>
     </div>
   );
 }
