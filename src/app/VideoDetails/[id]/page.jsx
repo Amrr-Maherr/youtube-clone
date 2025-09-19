@@ -39,7 +39,7 @@ export default function VideoDetailsPage() {
   return (
     <>
       <Navbar />
-      <div className="grid grid-cols-12 gap-5 px-2 md:px-10 mt-5">
+      <div className="grid grid-cols-12 gap-5 px-2 md:px-4 mt-5">
         <div className="col-span-12 md:col-span-9">
           <VideoDetailsCard video={video} comments={comments} />
         </div>
