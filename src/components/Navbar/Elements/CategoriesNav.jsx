@@ -1,6 +1,7 @@
 "use client";
 import Slider from "@/components/Slider/Slider";
 import { FetchCategories } from "@/Store/CategoriesSlice";
+import { FetchVideosByCategory } from "@/Store/videosByCategorySlice";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -14,6 +15,7 @@ function CategoriesNav() {
   useEffect(() => {
     dispatch(FetchCategories());
   }, [dispatch]);
+
   if (loading) {
     return <p>loading ...</p>;
   }
@@ -34,7 +36,10 @@ function CategoriesNav() {
         {Data.slice(0, 15).map((ele) => (
           <div
             key={ele.id}
-            onClick={() => setSelectedId(ele.id)}
+            onClick={() => {
+              setSelectedId(ele.id);
+              dispatch(FetchVideosByCategory({ categoryId: ele.id }));
+            }}
             className={`shrink-0 rounded-[8px] px-4 py-2 text-[14px] cursor-pointer transition ${
               selectedId === ele.id
                 ? "bg-white text-black"
