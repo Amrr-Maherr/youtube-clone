@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import VideoCard from "./Elements/VideoCard";
 import { FetchVideosByCategory } from "@/Store/videosByCategorySlice";
+import Loader from "@/components/Loader/Loader";
 
 export default function VideosByCategory({ categoryId }) {
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ export default function VideosByCategory({ categoryId }) {
     }
   }, [dispatch, categoryId]);
 
-  if (loading) return <p className="text-gray-400 text-center w-full">Loading...</p>;
+  if (loading) return <Loader/>;
   if (error) return <p className="text-red-500">Error: {error}</p>;
 
   return (
