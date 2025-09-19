@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar/Navbar";
 import VideoDetailsCard from "@/components/VideoDetailsCard/VideoDetailsCard";
 import VideoCard from "@/Main/Elements/VideoCard";
 import { FetchMostPopularVideos } from "@/Store/MostPopularSlice";
+import { FetchVideoComments } from "@/Store/videoCommentsSlice";
 import { FetchVideoDetails } from "@/Store/videoDetailsSlice";
 import { useParams } from "next/navigation";
 import { useEffect } from "react";
@@ -17,11 +18,13 @@ export default function VideoDetailsPage() {
   const mostPopular = useSelector(
     (state) => state.mostPopularVideos.data
   );
+  const comments = useSelector((state) => state.videoComments?.data?.items);
   const { data, loading, error } = videoDetails;
 
   useEffect(() => {
     if (id) {
       dispatch(FetchVideoDetails(id));
+      dispatch(FetchVideoComments(id));
       dispatch(FetchMostPopularVideos());
     }
   }, [dispatch, id]);
@@ -36,11 +39,11 @@ export default function VideoDetailsPage() {
   return (
     <>
       <Navbar />
-      <div className="grid grid-cols-12 gap-5 px-5">
-        <div className="col-span-12 md:col-span-10">
-          <VideoDetailsCard video={video} />
+      <div className="grid grid-cols-12 gap-5 px-10 mt-5">
+        <div className="col-span-12 md:col-span-9">
+          <VideoDetailsCard video={video} comments={comments} />
         </div>
-        <div className="col-span-12 md:col-span-2 space-y-10">
+        <div className="col-span-12 md:col-span-3 space-y-10">
           {mostPopular.map((video) => (
             <VideoCard video={video} key={video.id} />
           ))}

@@ -6,9 +6,12 @@ import {
   ArrowDownToLine,
   EllipsisVertical,
 } from "lucide-react";
-function VideoDetailsCard({ video }) {
-    console.log(video, "video");
-    
+import VideoComments from "./VideoComments";
+
+function VideoDetailsCard({ video, comments }) {
+  console.log(video, "video");
+  console.log(comments, "comments");
+
   return (
     <div className="flex flex-col gap-6">
       <div className="flex-1">
@@ -26,7 +29,6 @@ function VideoDetailsCard({ video }) {
         <h1 className="text-[20px] font-[700] mb-2 text-[#f1f1f1]">
           {video.snippet.title}
         </h1>
-        {/* <p className="text-gray-700 mb-4">{video.snippet.description}</p> */}
         <div className="text-sm text-gray-500 space-y-1 flex items-center justify-between">
           <div className="flex items-center justify-end gap-5 flex-row-reverse my-2">
             <Button
@@ -35,13 +37,10 @@ function VideoDetailsCard({ video }) {
             >
               Subscribe
             </Button>
-            <p>{video.snippet.channelTitle}</p>
+            <p className="text-white text-[18px]">{video.snippet.channelTitle}</p>
           </div>
           <div className="flex items-center justify-center rounded-full">
             <div className="bg-[#303030] p-2 text-white rounded-l-full cursor-pointer">
-              {/* <p>
-                {Number(video.statistics.likeCount).toLocaleString()}
-              </p> */}
               <ThumbsDown />
             </div>
             <div className="bg-[#303030] p-2 text-white rounded-r-full flex items-center justify-center cursor-pointer gap-2">
@@ -50,6 +49,9 @@ function VideoDetailsCard({ video }) {
             </div>
           </div>
         </div>
+
+        {/* Comments Section */}
+        <VideoComments comments={comments} />
       </div>
     </div>
   );
