@@ -4,15 +4,17 @@ import React, { useState, useEffect } from "react";
 import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { useDispatch, useSelector } from "react-redux";
-import { FetchSearchVideos } from "@/Store/searchVideosSlice";
+import {
+  clearSearchResults,
+  FetchSearchVideos,
+} from "@/Store/searchVideosSlice";
 import Link from "next/link";
+import SearchResult from "./SearchResult";
 
 const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const dispatch = useDispatch();
-
   const { data, loading, error } = useSelector((state) => state.searchVideos);
-
   const handleSearch = (e) => {
     e.preventDefault();
     if (searchQuery.trim() !== "") {
@@ -20,17 +22,6 @@ const SearchBar = () => {
     }
   };
 
-  useEffect(() => {
-    if (data.length > 0) {
-      console.log("Search Results:", data);
-    }
-  }, [data]);
-  {
-    loading && <p className="text-white mt-2">Loading...</p>;
-  }
-  {
-    error && <p className="text-red-500 mt-2">Error: {error}</p>;
-  }
   return (
     <div className="flex-grow max-w-[500px] mx-4 relative">
       <form onSubmit={handleSearch} className="relative">
@@ -48,25 +39,7 @@ const SearchBar = () => {
         />
       </form>
       {data.length > 0 ? (
-        <div className="absolute top-10 z-50 !h-fit w-full bg-[#303030]">
-          {data.slice(0, 8).map((ele) => (
-            <Link
-              href={`/VideoDetails/${ele.id.videoId}`}
-              key={ele.id.videoId || ele.id}
-            >
-              <div className="flex items-center gap-3 p-2 hover:bg-[#2a2a2a] cursor-pointer transition-colors duration-150">
-                <img
-                  src={ele?.snippet?.thumbnails?.default?.url}
-                  alt={ele?.snippet?.title}
-                  className="w-12 h-12 rounded-md object-cover"
-                />
-                <p className="text-white text-sm line-clamp-1 truncate-1">
-                  {ele?.snippet?.title}
-                </p>
-              </div>
-            </Link>
-          ))}
-        </div>
+        <SearchResult data={data} error={error} loading={loading} />
       ) : null}
     </div>
   );
