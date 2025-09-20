@@ -4,6 +4,7 @@ import mostPopularVideosReducer from "../Store/MostPopularSlice";
 import videosByCategoryReducer from "../Store/videosByCategorySlice";
 import videoDetailsReducer from "../Store/videoDetailsSlice";
 import videoCommentsSlice from "../Store/videoCommentsSlice"
+import searchVideosSlice from "../Store/searchVideosSlice";
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     videosByCategory: videosByCategoryReducer,
     videoDetails: videoDetailsReducer,
     videoComments: videoCommentsSlice,
+    searchVideos: searchVideosSlice,
   },
 });
 
