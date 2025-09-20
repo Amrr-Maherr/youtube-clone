@@ -5,7 +5,7 @@ function SearchResult({ data,loading }) {
     if (loading) {
         return (
           <>
-            <div className="absolute top-10 z-50 !h-fit w-full bg-[#303030]">
+            <div className="absolute top-10 z-50 flex items-center justify-center !h-fit w-full bg-[#303030]">
                 <MoonLoader color="red"/>
             </div>
           </>
