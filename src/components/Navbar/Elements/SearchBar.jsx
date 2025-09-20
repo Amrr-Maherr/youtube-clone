@@ -1,14 +1,12 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { Search } from "lucide-react";
+import React, { useState } from "react";
+import { Search, X } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  clearSearchResults,
   FetchSearchVideos,
 } from "@/Store/searchVideosSlice";
-import Link from "next/link";
 import SearchResult from "./SearchResult";
 
 const SearchBar = () => {
@@ -25,15 +23,22 @@ const SearchBar = () => {
   return (
     <div className="flex-grow max-w-[500px] mx-4 relative">
       <form onSubmit={handleSearch} className="relative">
+        {searchQuery && (
+          <X
+            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#aaaaaa] cursor-pointer hover:text-white"
+            size={18}
+            onClick={() => setSearchQuery("")}
+          />
+        )}
         <Input
           type="text"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           placeholder="Search"
-          className="w-full pl-10 pr-4 py-2 bg-[#121212] rounded-full border border-[#303030] text-white focus:ring-2 focus:ring-[#1a73e8] font-roboto text-[16px] placeholder-[#aaaaaa] text-right"
+          className="w-full pl-10 pr-10 py-2 bg-[#121212] rounded-full border border-[#303030] text-white focus:ring-2 focus:ring-[#1a73e8] font-roboto text-[16px] placeholder-[#aaaaaa] text-right"
         />
         <Search
-          className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#aaaaaa] cursor-pointer"
+          className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#aaaaaa] cursor-pointer hover:text-white"
           size={20}
           onClick={handleSearch}
         />

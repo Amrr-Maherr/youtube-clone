@@ -1,6 +1,7 @@
+import { clearSearchResults } from "@/Store/searchVideosSlice";
 import Link from "next/link";
 import { MoonLoader } from "react-spinners";
-function SearchResult({ data, error, loading }) {
+function SearchResult({ data,loading }) {
     if (loading) {
         return (
           <>
