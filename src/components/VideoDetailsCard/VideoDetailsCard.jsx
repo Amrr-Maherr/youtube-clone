@@ -3,6 +3,7 @@ import VideoTitle from "./VideoTitle";
 import VideoChannelInfo from "./VideoChannelInfo";
 import VideoActions from "./VideoActions";
 import VideoComments from "./VideoComments";
+import CommentField from "./CommentField";
 
 function VideoDetailsCard({ video, comments }) {
   return (
@@ -21,7 +22,7 @@ function VideoDetailsCard({ video, comments }) {
           {/* Actions */}
           <VideoActions likeCount={video.statistics.likeCount} />
         </div>
-
+        <CommentField/>
         {/* Comments */}
         <VideoComments comments={comments} />
       </div>
