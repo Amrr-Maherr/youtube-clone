@@ -16,7 +16,7 @@ function VideoDetailsCard({ video, comments }) {
     <div className="flex flex-col gap-6">
       <div className="flex-1">
         <iframe
-          className="w-full h-64 sm:h-96 lg:h-[695px]"
+          className="w-full h-64 sm:h-96 lg:h-[695px] rounded-xl"
           src={`https://www.youtube.com/embed/${video.id}`}
           title={video.snippet.title}
           frameBorder="0"
@@ -37,7 +37,9 @@ function VideoDetailsCard({ video, comments }) {
             >
               Subscribe
             </Button>
-            <p className="text-white text-[18px]">{video.snippet.channelTitle}</p>
+            <p className="text-white text-[18px]">
+              {video.snippet.channelTitle}
+            </p>
           </div>
           <div className="flex items-center justify-center rounded-full">
             <div className="bg-[#303030] p-2 text-white rounded-l-full cursor-pointer">
