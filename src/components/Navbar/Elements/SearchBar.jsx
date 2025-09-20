@@ -5,6 +5,7 @@ import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { useDispatch, useSelector } from "react-redux";
 import { FetchSearchVideos } from "@/Store/searchVideosSlice";
+import Link from "next/link";
 
 const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -31,7 +32,7 @@ const SearchBar = () => {
     error && <p className="text-red-500 mt-2">Error: {error}</p>;
   }
   return (
-    <div className="flex-grow max-w-[500px] mx-4">
+    <div className="flex-grow max-w-[500px] mx-4 relative">
       <form onSubmit={handleSearch} className="relative">
         <Input
           type="text"
@@ -46,6 +47,27 @@ const SearchBar = () => {
           onClick={handleSearch}
         />
       </form>
+      {data.length > 0 ? (
+        <div className="absolute top-10 z-50 !h-fit w-full bg-[#303030]">
+          {data.slice(0, 8).map((ele) => (
+            <Link
+              href={`/VideoDetails/${ele.id.videoId}`}
+              key={ele.id.videoId || ele.id}
+            >
+              <div className="flex items-center gap-3 p-2 hover:bg-[#2a2a2a] cursor-pointer transition-colors duration-150">
+                <img
+                  src={ele?.snippet?.thumbnails?.default?.url}
+                  alt={ele?.snippet?.title}
+                  className="w-12 h-12 rounded-md object-cover"
+                />
+                <p className="text-white text-sm line-clamp-1 truncate-1">
+                  {ele?.snippet?.title}
+                </p>
+              </div>
+            </Link>
+          ))}
+        </div>
+      ) : null}
     </div>
   );
 };
