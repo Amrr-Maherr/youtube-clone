@@ -13,8 +13,8 @@ export const FetchMostPopularVideos = createAsyncThunk(
             part: "snippet,contentDetails,statistics",
             chart: "mostPopular",
             regionCode: "EG",
-            maxResults: 50,
-            key: "AIzaSyDfEiDb-6fjNXQIDtn3Q7-PaXD5XzDir2g",
+            maxResults: 20,
+            key: "AIzaSyAMnZmDB1MLSZo4wRWt_ylmgbsDSxRZcTM",
           },
         }
       );

@@ -12,8 +12,8 @@ export const FetchVideoComments = createAsyncThunk(
           params: {
             part: "snippet",
             videoId: videoId,
-            key: "AIzaSyDfEiDb-6fjNXQIDtn3Q7-PaXD5XzDir2g",
-            maxResults: 100,
+            key: "AIzaSyAMnZmDB1MLSZo4wRWt_ylmgbsDSxRZcTM",
+            maxResults: 20,
             order: "relevance",
           },
         }

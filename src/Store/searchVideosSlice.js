@@ -14,7 +14,7 @@ export const FetchSearchVideos = createAsyncThunk(
             maxResults: 50,
             q: query,
             type: "video",
-            key: "AIzaSyDfEiDb-6fjNXQIDtn3Q7-PaXD5XzDir2g",
+            key: "AIzaSyAMnZmDB1MLSZo4wRWt_ylmgbsDSxRZcTM",
           },
         }
       );

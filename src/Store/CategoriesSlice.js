@@ -12,7 +12,7 @@ export const FetchCategories =  createAsyncThunk(
           params: {
             part: "snippet",
             regionCode: "EG",
-            key: "AIzaSyDfEiDb-6fjNXQIDtn3Q7-PaXD5XzDir2g",
+            key: "AIzaSyAMnZmDB1MLSZo4wRWt_ylmgbsDSxRZcTM",
           },
         }
       );

@@ -18,25 +18,24 @@ export default function VideoDetailsPage() {
 
   const videoDetails = useSelector((state) => state.videoDetails);
   const mostPopular = useSelector((state) => state.mostPopularVideos.data);
-  const searchResults = useSelector((state) => state.searchVideos.data);
+  // const searchResults = useSelector((state) => state.searchVideos.data);
   const comments = useSelector((state) => state.videoComments?.data?.items);
   const { data, loading, error } = videoDetails;
-console.log(searchResults, "searchResults");
-
   useEffect(() => {
     if (id) {
       dispatch(FetchVideoDetails(id));
       dispatch(FetchVideoComments(id));
       dispatch(FetchMostPopularVideos());
+      // dispatch(FetchMostPopularVideos());
     }
   }, [dispatch, id]);
 
-  useEffect(() => {
-    if (data?.items?.length > 0) {
-      const videoTitle = data.items[0].snippet.title;
-      dispatch(FetchSearchVideos(videoTitle));
-    }
-  }, [dispatch, data, id]);
+  // useEffect(() => {
+  //   if (data?.items?.length > 0) {
+  //     const videoTitle = data.items[0].snippet.title;
+  //     dispatch(FetchSearchVideos(videoTitle));
+  //   }
+  // }, [dispatch, data, id]);
 
   if (loading) return <Loader />;
   if (error) return <p className="text-center mt-10 text-red-500">{error}</p>;

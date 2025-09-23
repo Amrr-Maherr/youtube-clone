@@ -11,7 +11,7 @@ export const FetchVideoDetails = createAsyncThunk(
           params: {
             part: "snippet,contentDetails,statistics",
             id: videoId,
-            key: "AIzaSyDfEiDb-6fjNXQIDtn3Q7-PaXD5XzDir2g",
+            key: "AIzaSyAMnZmDB1MLSZo4wRWt_ylmgbsDSxRZcTM",
           },
         }
       );

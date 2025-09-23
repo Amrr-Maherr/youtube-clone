@@ -15,7 +15,7 @@ export const FetchVideosByCategory = createAsyncThunk(
             videoCategoryId: categoryId,
             regionCode,
             maxResults,
-            key: "AIzaSyDfEiDb-6fjNXQIDtn3Q7-PaXD5XzDir2g",
+            key: "AIzaSyAMnZmDB1MLSZo4wRWt_ylmgbsDSxRZcTM",
           },
         }
       );

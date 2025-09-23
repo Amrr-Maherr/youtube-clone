@@ -1,14 +1,17 @@
 import VideoDetailsCard from "@/components/VideoDetailsCard/VideoDetailsCard";
 import VideoCard from "@/Main/Elements/VideoCard";
+import { useSelector } from "react-redux";
 
 function VideosList({ video, comments }) {
+  const searchResults = useSelector((state) => state.searchVideos.data);
+    const mostPopular = useSelector((state) => state.mostPopularVideos.data);
   return (
     <>
       <div className="col-span-12 md:col-span-9">
         <VideoDetailsCard video={video} comments={comments} />
       </div>
       <div className="col-span-12 md:col-span-3 space-y-10">
-        {searchResults.map((video) => (
+        {mostPopular.map((video) => (
           <VideoCard video={video} key={video.id.videoId} />
         ))}
       </div>
