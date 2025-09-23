@@ -35,7 +35,7 @@ function VideoComments({ comments }) {
                   </div>
                 </div>
 
-                <p className="font-normal text-[#f1f1f1] text-[14px] max-w-[700px]">
+                <p className="font-normal text-[#f1f1f1] text-[14px] line-clamp-2 md:line-clamp-none md:max-w-[700px]">
                   {snippet.textOriginal}
                 </p>
                 <CommentActions comment={c} />
