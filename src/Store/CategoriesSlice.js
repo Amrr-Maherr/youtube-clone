@@ -11,7 +11,7 @@ export const FetchCategories =  createAsyncThunk(
         {
           params: {
             part: "snippet",
-            regionCode: "US",
+            regionCode: "EG",
             key: "AIzaSyDfEiDb-6fjNXQIDtn3Q7-PaXD5XzDir2g",
           },
         }
