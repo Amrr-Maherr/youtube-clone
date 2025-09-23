@@ -14,7 +14,7 @@ export const FetchMostPopularVideos = createAsyncThunk(
             chart: "mostPopular",
             regionCode: "EG",
             maxResults: 20,
-            key: "AIzaSyAMnZmDB1MLSZo4wRWt_ylmgbsDSxRZcTM",
+            key: process.env.NEXT_PUBLIC_YOUTUBE_API_KEY,
           },
         }
       );

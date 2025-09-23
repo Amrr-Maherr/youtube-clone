@@ -18,7 +18,6 @@ export default function VideoDetailsPage() {
 
   const videoDetails = useSelector((state) => state.videoDetails);
   const mostPopular = useSelector((state) => state.mostPopularVideos.data);
-  // const searchResults = useSelector((state) => state.searchVideos.data);
   const comments = useSelector((state) => state.videoComments?.data?.items);
   const { data, loading, error } = videoDetails;
   useEffect(() => {
