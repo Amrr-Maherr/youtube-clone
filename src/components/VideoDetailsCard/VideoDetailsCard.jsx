@@ -3,7 +3,7 @@ import VideoTitle from "./VideoTitle";
 import VideoChannelInfo from "./VideoChannelInfo";
 import VideoActions from "./VideoActions";
 import CommentField from "./CommentField";
-import CommentsCount from "../VideoDetailsCard/CommentsCount/CommentsCount";
+import CommentsCount from "./commentsCount/commentsCount";
 import VideoComments from "../VideoDetailsCard/VideoComments/VideoComments"
 function VideoDetailsCard({ video, comments }) {
   console.log(comments, "com");

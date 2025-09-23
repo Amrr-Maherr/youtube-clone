@@ -1,6 +1,6 @@
 import { EllipsisVertical } from "lucide-react";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import CommentActions from "./CommentActions";
+import CommentActions from "../CommentActions/CommentActions";
 function VideoComments({ comments }) {
   return (
     <div className="mt-6">
