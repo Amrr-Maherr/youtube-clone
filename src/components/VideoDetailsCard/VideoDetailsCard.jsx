@@ -6,6 +6,8 @@ import VideoComments from "./VideoComments";
 import CommentField from "./CommentField";
 
 function VideoDetailsCard({ video, comments }) {
+  console.log(comments,"com");
+  
   return (
     <div className="flex flex-col gap-6">
       {/* Video Player */}
