@@ -1,6 +1,12 @@
 import {
+  ThumbsDown,
+  ThumbsUp,
+  Share2,
+  ArrowDownToLine,
+  ListPlus,
   EllipsisVertical,
 } from "lucide-react";
+import CommentActions from "./CommentActions/CommentActions";
 function VideoComments({ comments }) {
   return (
     <div className="mt-6">
@@ -15,14 +21,10 @@ function VideoComments({ comments }) {
               <p className="font-normal text-[#f1f1f1] text-[14px] max-w-[700px]">
                 {c.snippet.topLevelComment.snippet.textDisplay}
               </p>
-              <p className="text-gray-500 text-xs">
-                {new Date(
-                  c.snippet.topLevelComment.snippet.publishedAt
-                ).toLocaleString()}
-              </p>
+              <CommentActions/>
             </div>
             <div>
-                <EllipsisVertical className="text-white"/>
+              <EllipsisVertical className="text-white" />
             </div>
           </div>
         ))
