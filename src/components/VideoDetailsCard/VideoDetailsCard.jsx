@@ -4,9 +4,10 @@ import VideoChannelInfo from "./VideoChannelInfo";
 import VideoActions from "./VideoActions";
 import VideoComments from "./VideoComments";
 import CommentField from "./CommentField";
-
+import CommentsCount from '../VideoDetailsCard/CommentsCount/CommentsCount'
 function VideoDetailsCard({ video, comments }) {
   console.log(comments,"com");
+  console.log(video, "video");
   
   return (
     <div className="flex flex-col gap-6">
@@ -24,10 +25,12 @@ function VideoDetailsCard({ video, comments }) {
           {/* Actions */}
           <VideoActions
             likeCount={video.statistics.likeCount}
+            comments={comments}
             videoId={`https://www.youtube.com/embed/${video.videoId}?controls=1`}
           />
         </div>
-        <CommentField />
+        {/* {CommentsCount} */}
+        <CommentsCount video={video} />
         {/* Comments */}
         <VideoComments comments={comments} />
       </div>

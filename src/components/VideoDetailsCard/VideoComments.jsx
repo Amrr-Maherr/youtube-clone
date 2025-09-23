@@ -1,7 +1,6 @@
 import { EllipsisVertical } from "lucide-react";
-import CommentActions from "./CommentActions/CommentActions";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-
+import CommentActions from "../VideoDetailsCard/CommentActions/CommentActions"
 function VideoComments({ comments }) {
   return (
     <div className="mt-6">
@@ -39,7 +38,7 @@ function VideoComments({ comments }) {
                 <p className="font-normal text-[#f1f1f1] text-[14px] max-w-[700px]">
                   {snippet.textOriginal}
                 </p>
-                <CommentActions />
+                <CommentActions comment={c} />
                 {c.snippet.totalReplyCount > 0 && (
                   <p className="text-sm text-blue-400 cursor-pointer hover:underline">
                     View {c.snippet.totalReplyCount} replies
