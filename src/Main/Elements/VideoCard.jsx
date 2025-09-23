@@ -2,7 +2,7 @@ import { EllipsisVertical } from "lucide-react";
 import Link from "next/link";
 function VideoCard({ video }) {
   return (
-    <Link href={`/VideoDetails/${video.id}`}>
+    <Link href={`/VideoDetails/${video.id.videoId}`}>
       <div className="w-full flex-shrink-0 flex-col mb-5 cursor-pointer mx-auto">
         <div className="relative pb-[56.25%] overflow-hidden rounded-lg bg-gray-800">
           <img

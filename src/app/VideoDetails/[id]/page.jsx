@@ -4,22 +4,24 @@ import Navbar from "@/components/Navbar/Navbar";
 import VideoDetailsCard from "@/components/VideoDetailsCard/VideoDetailsCard";
 import VideoCard from "@/Main/Elements/VideoCard";
 import { FetchMostPopularVideos } from "@/Store/MostPopularSlice";
+import { FetchSearchVideos } from "@/Store/searchVideosSlice";
 import { FetchVideoComments } from "@/Store/videoCommentsSlice";
 import { FetchVideoDetails } from "@/Store/videoDetailsSlice";
 import { useParams } from "next/navigation";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import VideosList from "../VideosList/VideosList";
 
 export default function VideoDetailsPage() {
   const { id } = useParams();
   const dispatch = useDispatch();
 
   const videoDetails = useSelector((state) => state.videoDetails);
-  const mostPopular = useSelector(
-    (state) => state.mostPopularVideos.data
-  );
+  const mostPopular = useSelector((state) => state.mostPopularVideos.data);
+  const searchResults = useSelector((state) => state.searchVideos.data);
   const comments = useSelector((state) => state.videoComments?.data?.items);
   const { data, loading, error } = videoDetails;
+console.log(searchResults, "searchResults");
 
   useEffect(() => {
     if (id) {
@@ -28,6 +30,13 @@ export default function VideoDetailsPage() {
       dispatch(FetchMostPopularVideos());
     }
   }, [dispatch, id]);
+
+  useEffect(() => {
+    if (data?.items?.length > 0) {
+      const videoTitle = data.items[0].snippet.title;
+      dispatch(FetchSearchVideos(videoTitle));
+    }
+  }, [dispatch, data, id]);
 
   if (loading) return <Loader />;
   if (error) return <p className="text-center mt-10 text-red-500">{error}</p>;
@@ -40,14 +49,7 @@ export default function VideoDetailsPage() {
     <>
       <Navbar />
       <div className="grid grid-cols-12 gap-5 px-2 md:px-4 mt-5">
-        <div className="col-span-12 md:col-span-9">
-          <VideoDetailsCard video={video} comments={comments} />
-        </div>
-        <div className="col-span-12 md:col-span-3 space-y-10">
-          {mostPopular.map((video) => (
-            <VideoCard video={video} key={video.id} />
-          ))}
-        </div>
+        <VideosList comments={comments} video={video}/>
       </div>
     </>
   );
