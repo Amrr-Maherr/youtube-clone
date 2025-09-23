@@ -21,7 +21,6 @@
     "next": "15.5.3",
     "react": "19.1.0",
     "react-clipboardjs-copy": "^2.1.0",
-    "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "19.1.0",
     "react-redux": "^9.2.0",
     "react-share": "^5.2.2",
