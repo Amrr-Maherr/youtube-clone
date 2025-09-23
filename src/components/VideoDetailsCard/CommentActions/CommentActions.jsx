@@ -10,7 +10,6 @@ export default function CommentActions({ comment }) {
       <div className="text-gray-500 text-xs">
         <p>Replay</p>
       </div>
-
       {/* Dislike Button */}
       <div className="w-[38px] h-[38px] rounded-full cursor-pointer hover:bg-[#272727] flex items-center justify-center gap-2">
         <ThumbsDown className="text-white w-[22px] h-[22px]" />
