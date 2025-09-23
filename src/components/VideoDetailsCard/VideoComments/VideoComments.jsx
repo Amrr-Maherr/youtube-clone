@@ -27,7 +27,7 @@ function VideoComments({ comments }) {
               </a>
               <div className="flex-1">
                 <div className="flex items-start justify-between">
-                  <p className="font-normal text-[#f1f1f1] text-[13px]">
+                  <p className="font-normal text-[#f1f1f1] text-[13px] truncate-1">
                     {snippet.authorDisplayName}
                   </p>
                   <div className="w-[32px] h-[32px] rounded-full hover:bg-[#272727] flex items-center justify-center gap-2">
