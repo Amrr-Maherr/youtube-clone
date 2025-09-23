@@ -12,7 +12,7 @@ export const FetchMostPopularVideos = createAsyncThunk(
           params: {
             part: "snippet,contentDetails,statistics",
             chart: "mostPopular",
-            regionCode: "US",
+            regionCode: "EG",
             maxResults: 50,
             key: "AIzaSyDfEiDb-6fjNXQIDtn3Q7-PaXD5XzDir2g",
           },

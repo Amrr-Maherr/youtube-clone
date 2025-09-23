@@ -4,7 +4,7 @@ import axios from "axios";
 // Async thunk to fetch videos by category
 export const FetchVideosByCategory = createAsyncThunk(
   "videosByCategory/fetchVideosByCategory",
-  async ({ categoryId, regionCode = "US", maxResults = 50 }) => {
+  async ({ categoryId, regionCode = "EG", maxResults = 100 }) => {
     try {
       const response = await axios.get(
         `https://www.googleapis.com/youtube/v3/videos`,
