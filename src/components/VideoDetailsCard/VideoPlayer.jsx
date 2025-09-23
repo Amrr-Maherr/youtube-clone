@@ -2,7 +2,7 @@ function VideoPlayer({ videoId, title }) {
   return (
     <iframe
       className="w-full h-64 sm:h-96 lg:h-[695px] rounded-xl"
-      src={`https://www.youtube.com/embed/${videoId}`}
+      src={`https://www.youtube.com/embed/${videoId}?controls=1`}
       title={title}
       frameBorder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
