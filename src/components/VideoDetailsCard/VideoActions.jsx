@@ -6,8 +6,8 @@ import {
   ListPlus,
   EllipsisVertical,
 } from "lucide-react";
-
-function VideoActions({ likeCount }) {
+import ShareButton from "./ShareButton/ShareButton";
+function VideoActions({ likeCount, videoId }) {
   return (
     <div className="flex items-center gap-3 text-white mt-3 flex-wrap">
       {/* Like / Dislike */}
@@ -21,11 +21,7 @@ function VideoActions({ likeCount }) {
         </button>
       </div>
 
-      {/* Share */}
-      <button className="flex items-center cursor-pointe gap-2 px-4 py-2 rounded-full bg-[#303030] hover:bg-[#3f3f3f] text-sm">
-        <Share2 size={18} />
-        <span>Share</span>
-      </button>
+      <ShareButton videoId={videoId} />
 
       {/* Download */}
       <button className="flex items-center cursor-pointe gap-2 px-4 py-2 rounded-full bg-[#303030] hover:bg-[#3f3f3f] text-sm">

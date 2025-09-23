@@ -20,9 +20,12 @@ function VideoDetailsCard({ video, comments }) {
           <VideoChannelInfo channelTitle={video.snippet.channelTitle} />
 
           {/* Actions */}
-          <VideoActions likeCount={video.statistics.likeCount} />
+          <VideoActions
+            likeCount={video.statistics.likeCount}
+            videoId={`https://www.youtube.com/embed/${video.videoId}?controls=1`}
+          />
         </div>
-        <CommentField/>
+        <CommentField />
         {/* Comments */}
         <VideoComments comments={comments} />
       </div>
