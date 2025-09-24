@@ -22,7 +22,7 @@ const SearchBar = () => {
   
   return (
     <div className="flex-grow max-w-[500px] mx-4 relative">
-      <form onSubmit={handleSearch} className="relative">
+      <form  className="relative">
         {searchQuery && (
           <X
             className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#aaaaaa] cursor-pointer hover:text-white"
@@ -40,7 +40,6 @@ const SearchBar = () => {
         <Search
           className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#aaaaaa] cursor-pointer hover:text-white"
           size={20}
-          onClick={handleSearch}
         />
       </form>
       {data.length > 0 ? (
