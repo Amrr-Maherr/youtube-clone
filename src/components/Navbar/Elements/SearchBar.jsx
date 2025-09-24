@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Search, X } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,13 +13,13 @@ const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const dispatch = useDispatch();
   const { data, loading, error } = useSelector((state) => state.searchVideos);
-  const handleSearch = (e) => {
-    e.preventDefault();
-    if (searchQuery.trim() !== "") {
-      dispatch(FetchSearchVideos(searchQuery));
-    }
-  };
-
+  
+  useEffect(() => {
+    setTimeout(() => {
+        dispatch(FetchSearchVideos(searchQuery));
+      },1000)
+    }, [searchQuery]);
+  
   return (
     <div className="flex-grow max-w-[500px] mx-4 relative">
       <form onSubmit={handleSearch} className="relative">
