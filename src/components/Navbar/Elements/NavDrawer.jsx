@@ -116,7 +116,7 @@ export default function NavDrawer() {
 
         <nav className="flex flex-col">
           <Link
-            href="/settings"
+            href="/SettingsPage"
             className="flex items-center gap-6 px-4 py-2 rounded-lg hover:bg-[#272727] text-sm"
           >
             <Settings size={22} />
