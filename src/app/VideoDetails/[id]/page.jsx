@@ -20,6 +20,8 @@ export default function VideoDetailsPage() {
   const mostPopular = useSelector((state) => state.mostPopularVideos.data);
   const comments = useSelector((state) => state.videoComments?.data?.items);
   const { data, loading, error } = videoDetails;
+  console.log(data, "videoDetails");
+  
   useEffect(() => {
     if (id) {
       dispatch(FetchVideoDetails(id));
