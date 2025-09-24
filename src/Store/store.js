@@ -6,6 +6,7 @@ import videoDetailsReducer from "../Store/videoDetailsSlice";
 import videoCommentsSlice from "../Store/videoCommentsSlice"
 import searchVideosSlice from "../Store/searchVideosSlice";
 import relatedVideosSlice from "../Store/relatedVideosSlice";
+import i18nSlice from "../Store/i18nSlice";
 
 const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ const store = configureStore({
     videoComments: videoCommentsSlice,
     searchVideos: searchVideosSlice,
     relatedVideos: relatedVideosSlice,
+    i18n: i18nSlice,
   },
 });
 

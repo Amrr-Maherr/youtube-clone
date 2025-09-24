@@ -1,6 +1,6 @@
 "use client";
 import Navbar from "@/components/Navbar/Navbar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   User,
   Lock,
@@ -27,9 +27,21 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
+// Redux
+import { useDispatch, useSelector } from "react-redux";
+import { FetchLanguages, FetchRegions } from "@/Store/i18nSlice";
+
 export default function SettingsPage() {
-  const [country, setCountry] = useState("Egypt");
-  const [language, setLanguage] = useState("English (US)");
+  const [country, setCountry] = useState("");
+  const [language, setLanguage] = useState("");
+
+  const dispatch = useDispatch();
+  const { languages, regions, loading } = useSelector((state) => state.i18n);
+
+  useEffect(() => {
+    dispatch(FetchLanguages());
+    dispatch(FetchRegions());
+  }, [dispatch]);
 
   return (
     <>
@@ -146,13 +158,17 @@ export default function SettingsPage() {
                   <SelectValue placeholder="Select language" />
                 </SelectTrigger>
                 <SelectContent className="bg-[#1a1a1a] border-[#303030] text-gray-200">
-                  <SelectItem value="English (US)">English (US)</SelectItem>
-                  <SelectItem value="English (UK)">English (UK)</SelectItem>
-                  <SelectItem value="العربية">العربية</SelectItem>
-                  <SelectItem value="Français">Français</SelectItem>
-                  <SelectItem value="Deutsch">Deutsch</SelectItem>
-                  <SelectItem value="Español">Español</SelectItem>
-                  <SelectItem value="日本語">日本語</SelectItem>
+                  {loading ? (
+                    <SelectItem disabled value="loading">
+                      Loading...
+                    </SelectItem>
+                  ) : (
+                    languages.map((lang) => (
+                      <SelectItem key={lang.id} value={lang.snippet.name}>
+                        {lang.snippet.name}
+                      </SelectItem>
+                    ))
+                  )}
                 </SelectContent>
               </Select>
 
@@ -165,14 +181,17 @@ export default function SettingsPage() {
                   <SelectValue placeholder="Select country" />
                 </SelectTrigger>
                 <SelectContent className="bg-[#1a1a1a] border-[#303030] text-gray-200">
-                  <SelectItem value="Egypt">Egypt</SelectItem>
-                  <SelectItem value="Saudi Arabia">Saudi Arabia</SelectItem>
-                  <SelectItem value="United States">United States</SelectItem>
-                  <SelectItem value="United Kingdom">United Kingdom</SelectItem>
-                  <SelectItem value="Germany">Germany</SelectItem>
-                  <SelectItem value="France">France</SelectItem>
-                  <SelectItem value="Japan">Japan</SelectItem>
-                  <SelectItem value="India">India</SelectItem>
+                  {loading ? (
+                    <SelectItem disabled value="loading">
+                      Loading...
+                    </SelectItem>
+                  ) : (
+                    regions.map((region) => (
+                      <SelectItem key={region.id} value={region.snippet.name}>
+                        {region.snippet.name}
+                      </SelectItem>
+                    ))
+                  )}
                 </SelectContent>
               </Select>
             </CardContent>
