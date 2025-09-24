@@ -6,7 +6,6 @@ import CommentField from "./CommentField";
 import CommentsCount from "./CommentsCount/CommentsCount";
 import VideoComments from "../VideoDetailsCard/VideoComments/VideoComments"
 function VideoDetailsCard({ video, comments }) {
-  console.log(comments, "com");
   console.log(video, "video");
 
   return (
