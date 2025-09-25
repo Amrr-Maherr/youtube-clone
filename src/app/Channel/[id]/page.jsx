@@ -47,24 +47,24 @@ function Page() {
             <figure className="w-[160px] h-[160px] rounded-full overflow-hidden">
               <img
                 className="w-full h-full"
-                src={data?.snippet.thumbnails.high.url}
-                alt={data?.snippet.localized.title}
+                src={data?.snippet?.thumbnails?.high?.url}
+                alt={data?.snippet?.localized?.title}
               />
             </figure>
           </div>
           <div>
             <h3 className="text-[36px] font-[700] text-[#f1f1f1]">
-              {data?.snippet.localized.title}
+              {data?.snippet?.localized?.title}
             </h3>
             <div className="flex items-center justify-center gap-2">
               <h3 className="text-[20px] font-[500] text-[#f1f1f1]">
-                {data?.snippet.customUrl}
+                {data?.snippet?.customUrl}
               </h3>
               <h3 className="text-[14px] font-[400] text-[#aaaaaa]">
-                {data?.statistics.subscriberCount} مليون مشترك
+                {data?.statistics?.subscriberCount} مليون مشترك
               </h3>
               <h3 className="text-[14px] font-[400] text-[#aaaaaa]">
-                {data?.statistics.videoCount} فيديو
+                {data?.statistics?.videoCount} فيديو
               </h3>
             </div>
             <div className="mt-3">

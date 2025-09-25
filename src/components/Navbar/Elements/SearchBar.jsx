@@ -14,11 +14,14 @@ const SearchBar = () => {
   const dispatch = useDispatch();
   const { data, loading, error } = useSelector((state) => state.searchVideos);
   
-  useEffect(() => {
-    setTimeout(() => {
-        dispatch(FetchSearchVideos(searchQuery));
-      },1000)
-    }, [searchQuery]);
+useEffect(() => {
+  if (!searchQuery) return;
+  const delayDebounce = setTimeout(() => {
+    dispatch(FetchSearchVideos(searchQuery));
+  }, 1000);
+  return () => clearTimeout(delayDebounce);
+}, [searchQuery, dispatch]);
+
   
   return (
     <div className="flex-grow max-w-[500px] mx-4 relative">
