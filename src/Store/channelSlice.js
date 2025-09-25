@@ -1,30 +1,56 @@
-// src/Store/channelSlice.js
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-// Async thunk to fetch channel details
+// Fetch channel details + videos
 export const FetchChannelDetails = createAsyncThunk(
   "channel/fetchChannelDetails",
   async (channelId) => {
     try {
-      const response = await axios.get(
-        `${"https://www.googleapis.com/youtube/v3/channels"}`,
+      const channelRes = await axios.get(
+        "https://www.googleapis.com/youtube/v3/channels",
         {
           params: {
-            part: "snippet,statistics,brandingSettings",
+            part: "snippet,statistics,brandingSettings,contentDetails",
             id: channelId,
             key: "AIzaSyAMnZmDB1MLSZo4wRWt_ylmgbsDSxRZcTM",
           },
         }
       );
-      return response.data.items[0];
+
+      const channelData = channelRes.data.items[0];
+
+      const uploadsPlaylistId =
+        channelData.contentDetails?.relatedPlaylists?.uploads;
+
+      let videos = [];
+      if (uploadsPlaylistId) {
+        const videosRes = await axios.get(
+          "https://www.googleapis.com/youtube/v3/playlistItems",
+          {
+            params: {
+              part: "snippet,contentDetails",
+              playlistId: uploadsPlaylistId,
+              maxResults: 30,
+              key: "AIzaSyAMnZmDB1MLSZo4wRWt_ylmgbsDSxRZcTM",
+            },
+          }
+        );
+
+        videos = videosRes.data.items.map((item) => ({
+          id: item.contentDetails.videoId,
+          title: item.snippet.title,
+          thumbnail: item.snippet.thumbnails?.medium?.url,
+          publishedAt: item.snippet.publishedAt,
+        }));
+      }
+
+      return { ...channelData, videos };
     } catch (error) {
       return error.response?.data || error.message;
     }
   }
 );
 
-// Slice
 const channelSlice = createSlice({
   name: "channel",
   initialState: {

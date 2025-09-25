@@ -19,7 +19,10 @@ function VideoDetailsCard({ video, comments }) {
 
         <div className="text-sm text-gray-500 space-y-1 flex items-center justify-between flex-wrap">
           {/* Channel Info */}
-          <VideoChannelInfo channelTitle={video.snippet.channelTitle} />
+          <VideoChannelInfo
+            channelTitle={video.snippet.channelTitle}
+            link={video.snippet.channelId}
+          />
 
           {/* Actions */}
           <VideoActions

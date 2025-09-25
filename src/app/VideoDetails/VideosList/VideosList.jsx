@@ -13,7 +13,7 @@ function VideosList({ video, comments }) {
         <VideoDetailsCard video={video} comments={comments} />
       </div>
       <div className="col-span-12 md:col-span-3 space-y-10">
-        {mostPopular.map((video) => (
+        {mostPopular?.map((video) => (
           <VideoCard video={video} key={video.id} />
         ))}
       </div>
