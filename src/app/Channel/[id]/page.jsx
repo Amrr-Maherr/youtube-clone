@@ -13,6 +13,7 @@ import ChannelVideoCard from "../Elements/ChannelVideoCard";
 import Loader from "@/components/Loader/Loader";
 import ChannelImage from "../Elements/ChannelImage";
 import ChannelBanner from "../Elements/ChannelBanner";
+import ChannelTabs from "../Elements/ChannelTabs";
 
 function Page() {
   const { id } = useParams();
@@ -33,6 +34,7 @@ function Page() {
   const playlists = data.videos || [];
   const Banner = data?.brandingSettings?.image?.bannerExternalUrl;
   console.log(data, "data");
+  console.log(data.snippet.localized.description, "data");
   // useEffect(() => {
   //   if (data?.snippet?.localized?.title) {
   //     document.title = data?.snippet?.localized?.title;
@@ -75,6 +77,10 @@ function Page() {
             </div>
           </div>
         </div>
+        <ChannelTabs
+          ChannelDescription={data.snippet.localized.description}
+          statistics={data.statistics}
+        />
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-5">
           {playlists?.map((video) => (
             <ChannelVideoCard video={video} key={video.id} />
