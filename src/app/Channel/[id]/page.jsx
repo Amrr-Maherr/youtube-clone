@@ -23,9 +23,7 @@ function Page() {
     if (id) dispatch(FetchChannelDetails(id));
   }, [id, dispatch]);
 
-  if (loading) return (
-    <Loader/>
-  );
+  if (loading) return <Loader />;
   if (error) return <div className="p-4 text-red-500">{error}</div>;
   if (!data) return null;
 
@@ -33,6 +31,11 @@ function Page() {
   const playlists = data.videos || [];
   const Banner = data?.brandingSettings?.image?.bannerExternalUrl;
   console.log(data, "data");
+  useEffect(() => {
+    if (data?.snippet?.localized?.title) {
+      document.title = data?.snippet?.localized?.title;
+    }
+  }, [data]);
   return (
     <>
       <Navbar />
