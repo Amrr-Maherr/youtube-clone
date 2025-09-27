@@ -1,11 +1,17 @@
-function ChannelBanner({ Banner }) {
-  if (!Banner) return null;
+function ChannelBanner({ src,className }) {
+  if (!src) return null;
   return (
     <div className="flex items-center justify-center">
-      <figure className="w-[1284px] h-[208px] rounded-lg overflow-hidden">
+      <figure
+        className={`${
+          className
+            ? className
+            : "w-[1284px] h-[208px] rounded-lg overflow-hidden"
+        } `}
+      >
         <img
           className="object-cover w-full h-full"
-          src={Banner}
+          src={src}
           alt="Channel Banner"
         />
       </figure>

@@ -11,6 +11,8 @@ import Navbar from "@/components/Navbar/Navbar";
 import VideoCard from "@/Main/Elements/VideoCard";
 import ChannelVideoCard from "../Elements/ChannelVideoCard";
 import Loader from "@/components/Loader/Loader";
+import ChannelImage from "../Elements/ChannelImage";
+import ChannelBanner from "../Elements/ChannelBanner";
 
 function Page() {
   const { id } = useParams();
@@ -31,36 +33,32 @@ function Page() {
   const playlists = data.videos || [];
   const Banner = data?.brandingSettings?.image?.bannerExternalUrl;
   console.log(data, "data");
-  useEffect(() => {
-    if (data?.snippet?.localized?.title) {
-      document.title = data?.snippet?.localized?.title;
-    }
-  }, [data]);
+  // useEffect(() => {
+  //   if (data?.snippet?.localized?.title) {
+  //     document.title = data?.snippet?.localized?.title;
+  //   }
+  // }, [data]);
   return (
     <>
       <Navbar />
       <section className="container max-w-[1284px] mx-auto px-4">
         <div className="flex items-center justify-center">
-          <figure className="w-[1284px] h-[208px] rounded-lg overflow-hidden">
-            <img className="object-cover w-full h-full" src={Banner} alt="" />
-          </figure>
+          <ChannelBanner src={Banner} />
         </div>
         <div className="flex items-center justify-start mt-5 gap-3">
           <div>
-            <figure className="w-[160px] h-[160px] rounded-full overflow-hidden">
-              <img
-                className="w-full h-full"
-                src={data?.snippet?.thumbnails?.high?.url}
-                alt={data?.snippet?.localized?.title}
-              />
-            </figure>
+            <ChannelImage
+              className="md:w-[160px] md:h-[160px] w-[60px] h-[60px] rounded-full overflow-hidden"
+              src={data?.snippet?.thumbnails?.high?.url}
+              title={data?.snippet?.localized?.title}
+            />
           </div>
           <div>
-            <h3 className="text-[36px] font-[700] text-[#f1f1f1]">
+            <h3 className="text-[20px] md:text-[36px] font-[700] text-[#f1f1f1]">
               {data?.snippet?.localized?.title}
             </h3>
             <div className="flex items-center justify-center gap-2">
-              <h3 className="text-[20px] font-[500] text-[#f1f1f1]">
+              <h3 className="text-[14px] md:text-[20px] font-[500] text-[#f1f1f1]">
                 {data?.snippet?.customUrl}
               </h3>
               <h3 className="text-[14px] font-[400] text-[#aaaaaa]">
