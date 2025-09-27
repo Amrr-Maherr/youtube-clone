@@ -35,11 +35,11 @@ function Page() {
   const Banner = data?.brandingSettings?.image?.bannerExternalUrl;
   console.log(data, "data");
   console.log(data.snippet.localized.description, "data");
-  // useEffect(() => {
-  //   if (data?.snippet?.localized?.title) {
-  //     document.title = data?.snippet?.localized?.title;
-  //   }
-  // }, [data]);
+  useEffect(() => {
+    if (data?.snippet?.localized?.title) {
+      document.title = data?.snippet?.localized?.title;
+    }
+  }, [data]);
   return (
     <>
       <Navbar />
