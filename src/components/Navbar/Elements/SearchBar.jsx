@@ -48,7 +48,12 @@ useEffect(() => {
         />
       </form>
       {data.length > 0 ? (
-        <SearchResult data={data} error={error} loading={loading} />
+        <SearchResult
+          data={data}
+          error={error}
+          loading={loading}
+          searchQuery={searchQuery}
+        />
       ) : null}
     </div>
   );

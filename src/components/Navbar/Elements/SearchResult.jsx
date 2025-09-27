@@ -1,18 +1,22 @@
 import { clearSearchResults } from "@/Store/searchVideosSlice";
 import Link from "next/link";
 import { MoonLoader } from "react-spinners";
-function SearchResult({ data,loading }) {
-    if (loading) {
-        return (
-          <>
-            <div className="absolute top-10 z-50 flex items-center justify-center !h-fit w-full bg-[#303030]">
-                <MoonLoader color="red"/>
-            </div>
-          </>
-        );
-    }
+function SearchResult({ data, loading, searchQuery }) {
+  if (loading) {
+    return (
+      <>
+        <div className="absolute top-10 z-50 flex items-center justify-center !h-fit w-full bg-[#303030]">
+          <MoonLoader color="red" />
+        </div>
+      </>
+    );
+  }
   return (
-    <div className="absolute top-10 z-50 !h-fit w-full bg-[#303030] rounded-md">
+    <div
+      className={`${
+        searchQuery ? "absolute" : "hidden"
+      }  top-10 z-50 !h-fit w-full bg-[#303030] rounded-md`}
+    >
       {data.slice(0, 8).map((ele) => (
         <Link
           href={`/VideoDetails/${ele.id.videoId}`}
