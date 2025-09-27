@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import VideoDetailsCard from "@/components/VideoDetailsCard/VideoDetailsCard";
 import VideoCard from "@/Main/Elements/VideoCard";
 import { useSelector } from "react-redux";
@@ -5,8 +6,15 @@ import { useSelector } from "react-redux";
 function VideosList({ video, comments }) {
   const searchResults = useSelector((state) => state.searchVideos.data);
   const mostPopular = useSelector((state) => state.mostPopularVideos.data);
-  console.log(comments,"com");
-  
+
+  useEffect(() => {
+    if (video?.snippet?.title) {
+      document.title = video.snippet.title;
+    }
+  }, [video]);
+
+  console.log(comments, "com");
+
   return (
     <>
       <div className="col-span-12 md:col-span-9">
@@ -21,4 +29,4 @@ function VideosList({ video, comments }) {
   );
 }
 
-export default VideosList
+export default VideosList;
