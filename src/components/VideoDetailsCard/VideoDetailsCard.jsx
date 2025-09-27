@@ -8,6 +8,7 @@ import VideoComments from "../VideoDetailsCard/VideoComments/VideoComments";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FetchChannelDetails } from "@/Store/channelSlice";
+import ChannelImage from "@/app/Channel/Elements/ChannelImage";
 function VideoDetailsCard({ video, comments }) {
   const dispatch = useDispatch();
   const channelId = video.snippet.channelId;
@@ -27,10 +28,10 @@ function VideoDetailsCard({ video, comments }) {
         <div className="text-sm text-gray-500  flex items-center justify-between flex-wrap">
           {/* Channel Info */}
           <div className="flex items-center justify-center gap-4">
-            <img
-              className="w-[40px] h-[40px] rounded-full"
+            <ChannelImage
               src={channeldata?.snippet?.thumbnails?.high?.url}
-              alt={video.snippet.channelTitle}
+              title={video.snippet.channelTitle}
+              className="w-[40px] h-[40px] rounded-full overflow-hidden"
             />
             <VideoChannelInfo
               channelTitle={video.snippet.channelTitle}
