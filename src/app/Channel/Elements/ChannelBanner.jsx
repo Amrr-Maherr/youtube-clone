@@ -6,7 +6,7 @@ function ChannelBanner({ src, className }) {
         className={`${
           className
             ? className
-            : "w-[428] md:w-[1284px] h-[80px] md:h-[208px] rounded-lg overflow-hidden"
+            : "w-[328] md:w-[1284px] h-[80px] md:h-[208px] rounded-lg overflow-hidden"
         }`}
       >
         <img
