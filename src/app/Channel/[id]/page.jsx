@@ -14,6 +14,8 @@ import Loader from "@/components/Loader/Loader";
 import ChannelImage from "../Elements/ChannelImage";
 import ChannelBanner from "../Elements/ChannelBanner";
 import ChannelTabs from "../Elements/ChannelTabs";
+import { FetchPlayLists } from "@/Store/ChannelPlayList";
+import PlayListCard from "../Elements/PlayListCard";
 
 function Page() {
   const { id } = useParams();
@@ -21,11 +23,12 @@ function Page() {
   const data = useSelector((state) => state.channel.data);
   const error = useSelector((state) => state.error);
   const loading = useSelector((state) => state.loading);
-
+  const PlayLists = useSelector((state) => state.playlist.items);
   useEffect(() => {
-    if (id) dispatch(FetchChannelDetails(id));
+    if (id)
+      dispatch(FetchChannelDetails(id));
+      dispatch(FetchPlayLists(id));
   }, [id, dispatch]);
-
   if (loading) return <Loader />;
   if (error) return <div className="p-4 text-red-500">{error}</div>;
   if (!data) return null;
@@ -33,13 +36,8 @@ function Page() {
   const { snippet, statistics, brandingSettings } = data;
   const playlists = data.videos || [];
   const Banner = data?.brandingSettings?.image?.bannerExternalUrl;
-  console.log(data, "data");
-  console.log(data.snippet.localized.description, "data");
-  useEffect(() => {
-    if (data?.snippet?.localized?.title) {
-      document.title = data?.snippet?.localized?.title;
-    }
-  }, [data]);
+    console.log(PlayLists, "play");
+    console.log(id, "id");
   return (
     <>
       <Navbar />
@@ -84,6 +82,11 @@ function Page() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-5">
           {playlists?.map((video) => (
             <ChannelVideoCard video={video} key={video.id} />
+          ))}
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-5">
+          {PlayLists?.map((playlist) => (
+            <PlayListCard playlist={playlist} key={playlist.id} />
           ))}
         </div>
       </section>

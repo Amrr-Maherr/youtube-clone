@@ -8,6 +8,7 @@ import searchVideosSlice from "../Store/searchVideosSlice";
 import relatedVideosSlice from "../Store/relatedVideosSlice";
 import i18nSlice from "../Store/i18nSlice";
 import channelSlice from "../Store/channelSlice";
+import playlistSlice from "../Store/ChannelPlayList";
 
 const store = configureStore({
   reducer: {
@@ -20,6 +21,7 @@ const store = configureStore({
     relatedVideos: relatedVideosSlice,
     i18n: i18nSlice,
     channel: channelSlice,
+    playlist: playlistSlice,
   },
 });
 
