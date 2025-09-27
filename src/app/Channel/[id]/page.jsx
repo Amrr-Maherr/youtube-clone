@@ -16,6 +16,8 @@ import ChannelBanner from "../Elements/ChannelBanner";
 import ChannelTabs from "../Elements/ChannelTabs";
 import { FetchPlayLists } from "@/Store/ChannelPlayList";
 import PlayListCard from "../Elements/PlayListCard";
+import PlayListSection from "../Elements/PlayListSection/PlayListSection";
+import ChannelVideosSection from "../Elements/ChannelVideosSection/ChannelVideosSection";
 
 function Page() {
   const { id } = useParams();
@@ -34,14 +36,14 @@ function Page() {
   if (!data) return null;
 
   const { snippet, statistics, brandingSettings } = data;
-  const playlists = data.videos || [];
+  const videos = data.videos || [];
   const Banner = data?.brandingSettings?.image?.bannerExternalUrl;
     console.log(PlayLists, "play");
     console.log(id, "id");
   return (
     <>
       <Navbar />
-      <section className="container max-w-[1284px] mx-auto px-4">
+      <section className="container max-w-[1284px] mx-auto px-4 py-4">
         <div className="flex items-center justify-center">
           <ChannelBanner src={Banner} />
         </div>
@@ -79,16 +81,8 @@ function Page() {
           ChannelDescription={data.snippet.localized.description}
           statistics={data.statistics}
         />
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-5">
-          {playlists?.map((video) => (
-            <ChannelVideoCard video={video} key={video.id} />
-          ))}
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-5">
-          {PlayLists?.map((playlist) => (
-            <PlayListCard playlist={playlist} key={playlist.id} />
-          ))}
-        </div>
+        <ChannelVideosSection videos={videos}/>
+        <PlayListSection PlayLists={PlayLists} />
       </section>
     </>
   );
