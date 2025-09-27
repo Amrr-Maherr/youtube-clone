@@ -4,10 +4,17 @@ import VideoChannelInfo from "./VideoChannelInfo";
 import VideoActions from "./VideoActions";
 import CommentField from "./CommentField";
 import CommentsCount from "./CommentsCount/CommentsCount";
-import VideoComments from "../VideoDetailsCard/VideoComments/VideoComments"
+import VideoComments from "../VideoDetailsCard/VideoComments/VideoComments";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { FetchChannelDetails } from "@/Store/channelSlice";
 function VideoDetailsCard({ video, comments }) {
-  console.log(video, "video");
-
+  const dispatch = useDispatch();
+  const channelId = video.snippet.channelId;
+  useEffect(() => {
+      if (channelId) dispatch(FetchChannelDetails(channelId));
+    }, [channelId, dispatch]);
+  const channeldata = useSelector((state) => state.channel.data);
   return (
     <div className="flex flex-col gap-6">
       {/* Video Player */}
@@ -17,12 +24,19 @@ function VideoDetailsCard({ video, comments }) {
         {/* Title */}
         <VideoTitle title={video.snippet.title} />
 
-        <div className="text-sm text-gray-500 space-y-1 flex items-center justify-between flex-wrap">
+        <div className="text-sm text-gray-500  flex items-center justify-between flex-wrap">
           {/* Channel Info */}
-          <VideoChannelInfo
-            channelTitle={video.snippet.channelTitle}
-            link={video.snippet.channelId}
-          />
+          <div className="flex items-center justify-center gap-4">
+            <img
+              className="w-[40px] h-[40px] rounded-full"
+              src={channeldata?.snippet?.thumbnails?.high?.url}
+              alt={video.snippet.channelTitle}
+            />
+            <VideoChannelInfo
+              channelTitle={video.snippet.channelTitle}
+              link={video.snippet.channelId}
+            />
+          </div>
 
           {/* Actions */}
           <VideoActions

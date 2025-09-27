@@ -12,7 +12,6 @@ function VideosList({ video, comments }) {
       document.title = video.snippet.title;
     }
   }, [video]);
-
   console.log(comments, "com");
 
   return (
