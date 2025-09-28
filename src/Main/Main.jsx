@@ -6,9 +6,9 @@ export default function Main() {
     return (
         <>
         <Navbar/>
-        {/* <section className="mt-2">
+        <section className="mt-2">
             <PopularVideos/>
-        </section> */}
+        </section>
         </>
     )
 }
