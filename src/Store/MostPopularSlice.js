@@ -4,7 +4,7 @@ import axios from "axios";
 // Async thunk to fetch most popular videos
 export const FetchMostPopularVideos = createAsyncThunk(
   "videos/fetchMostPopularVideos",
-  async () => {
+  async (Country = "EG") => {
     try {
       const response = await axios.get(
         "https://www.googleapis.com/youtube/v3/videos",
@@ -12,7 +12,7 @@ export const FetchMostPopularVideos = createAsyncThunk(
           params: {
             part: "snippet,contentDetails,statistics",
             chart: "mostPopular",
-            regionCode: "EG",
+            regionCode: Country,
             maxResults: 50,
             key: "AIzaSyAMnZmDB1MLSZo4wRWt_ylmgbsDSxRZcTM",
           },

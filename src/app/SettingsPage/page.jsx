@@ -30,6 +30,7 @@ import {
 // Redux
 import { useDispatch, useSelector } from "react-redux";
 import { FetchLanguages, FetchRegions } from "@/Store/i18nSlice";
+import { FetchMostPopularVideos } from "@/Store/MostPopularSlice";
 
 export default function SettingsPage() {
   const [country, setCountry] = useState("");
@@ -37,12 +38,20 @@ export default function SettingsPage() {
 
   const dispatch = useDispatch();
   const { languages, regions, loading } = useSelector((state) => state.i18n);
+    const mostPopular = useSelector((state) => state.mostPopularVideos.data);
 
   useEffect(() => {
     dispatch(FetchLanguages());
     dispatch(FetchRegions());
   }, [dispatch]);
 
+  useEffect(() => {
+    dispatch(FetchMostPopularVideos(country ? country : undefined));
+    localStorage.setItem("code",JSON.stringify(country))
+  }, [country]);
+
+      console.log(country);
+      console.log(mostPopular, "mostPopular");
   return (
     <>
       <Navbar />
@@ -149,7 +158,6 @@ export default function SettingsPage() {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              {/* Language */}
               <label className="text-sm block mb-1 text-gray-300">
                 Language:
               </label>
@@ -187,7 +195,7 @@ export default function SettingsPage() {
                     </SelectItem>
                   ) : (
                     regions.map((region) => (
-                      <SelectItem key={region.id} value={region.snippet.name}>
+                      <SelectItem key={region.id} value={region.snippet.gl}>
                         {region.snippet.name}
                       </SelectItem>
                     ))

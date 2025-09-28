@@ -2,16 +2,16 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 // Async thunk to fetch categories
-export const FetchCategories =  createAsyncThunk(
+export const FetchCategories = createAsyncThunk(
   "categories/fetchCategories",
-  async () => {
+  async (Country = "EG") => {
     try {
       const response = await axios.get(
         `${"https://www.googleapis.com/youtube/v3"}${"/videoCategories"}`,
         {
           params: {
             part: "snippet",
-            regionCode: "EG",
+            regionCode: Country,
             key: "AIzaSyAMnZmDB1MLSZo4wRWt_ylmgbsDSxRZcTM",
           },
         }
