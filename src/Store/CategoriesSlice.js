@@ -13,7 +13,7 @@ export const FetchCategories = createAsyncThunk(
             part: "snippet",
             regionCode: Country,
             key: "AIzaSyAMnZmDB1MLSZo4wRWt_ylmgbsDSxRZcTM",
-            hl: hl, // صححنا هنا
+            hl: hl,
           },
         }
       );
