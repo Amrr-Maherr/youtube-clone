@@ -28,7 +28,7 @@ export default function VideosByCategory() {
 console.log(loading);
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 px-2 md:px-10">
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 px-2 px-4">
       {mostPopular.length < 0 ? (
         <div className="flex items-center justify-center h-[70dvh] w-full col-span-12">
           <p className="text-gray-400 text-center w-full">
