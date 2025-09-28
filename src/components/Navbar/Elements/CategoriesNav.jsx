@@ -10,11 +10,12 @@ function CategoriesNav() {
   const Data = useSelector((state) => state.categories.data.items) || [];
   const error = useSelector((state) => state.categories.error);
   const loading = useSelector((state) => state.categories.loading);
-  const [selectedId, setSelectedId] = useState(null);
 
   useEffect(() => {
     dispatch(FetchCategories());
   }, [dispatch]);
+  
+console.log(Data,"data");
 
   if (loading) {
     return <p>loading ...</p>;
@@ -33,18 +34,10 @@ function CategoriesNav() {
         showNavigation={false}
         slidesPerViewMobile={2}
       >
-        {Data.slice(0, 15).map((ele) => (
+        {Data.map((ele) => (
           <div
             key={ele.id}
-            onClick={() => {
-              setSelectedId(ele.id);
-              dispatch(FetchVideosByCategory({ categoryId: ele.id }));
-            }}
-            className={`shrink-0 rounded-[8px] px-4 py-2 text-[14px] cursor-pointer transition ${
-              selectedId === ele.id
-                ? "bg-white text-black"
-                : "bg-[#272727] text-white hover:bg-[#3a3a3a]"
-            }`}
+            className="shrink-0 rounded-[8px] px-4 py-2 text-[14px] cursor-pointer transition bg-[#272727] text-white hover:bg-[#3a3a3a]"
           >
             <p className="text-center whitespace-nowrap overflow-hidden text-ellipsis">
               {ele.snippet.title}

@@ -4,15 +4,16 @@ import axios from "axios";
 // Async thunk to fetch categories
 export const FetchCategories = createAsyncThunk(
   "categories/fetchCategories",
-  async (Country = "EG") => {
+  async ({ Country = "US", hl = "en" } = {}) => {
     try {
       const response = await axios.get(
-        `${"https://www.googleapis.com/youtube/v3"}${"/videoCategories"}`,
+        "https://www.googleapis.com/youtube/v3/videoCategories",
         {
           params: {
             part: "snippet",
             regionCode: Country,
             key: "AIzaSyAMnZmDB1MLSZo4wRWt_ylmgbsDSxRZcTM",
+            hl: hl, // صححنا هنا
           },
         }
       );
@@ -22,6 +23,7 @@ export const FetchCategories = createAsyncThunk(
     }
   }
 );
+
 
 // Slice
 const categoriesSlice = createSlice({
